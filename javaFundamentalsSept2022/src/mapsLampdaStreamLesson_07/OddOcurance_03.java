@@ -1,0 +1,30 @@
+package mapsLampdaStreamLesson_07;
+
+import java.util.*;
+
+public class OddOcurance_03 {
+    public static void main (String[] arg ) {
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        String[] inputArr = scanner.nextLine().split(" ");
+
+        LinkedHashMap<String, Integer> wordsMap = new LinkedHashMap<>();
+
+        for (String words : inputArr){
+            String changedWords = words.toLowerCase();
+            wordsMap.putIfAbsent(changedWords, 0);
+            wordsMap.put(changedWords, wordsMap.get(changedWords) + 1);
+        }
+        List<String> finalList = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
+            if (entry.getValue() % 2 != 0 ){
+                finalList.add(entry.getKey());
+            }
+        }
+        System.out.println(String.join(", ",finalList));
+
+    }
+}
